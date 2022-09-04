@@ -21,7 +21,7 @@ USE `tienda` ;
 -- Table `tienda`.`clientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`clientes` (
-  `idClientes` INT NOT NULL,
+  `idClientes` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellio` VARCHAR(45) NOT NULL,
   `telefono` VARCHAR(45) NOT NULL,
