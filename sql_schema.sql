@@ -21,158 +21,158 @@ USE `tienda` ;
 -- Table `tienda`.`clientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`clientes` (
-  `idClientes` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apellio` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idClientes`),
-  UNIQUE INDEX `idClientes_UNIQUE` (`idClientes` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    `idClientes` INT NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(45) NOT NULL,
+    `apellio` VARCHAR(45) NOT NULL,
+    `telefono` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`idClientes`),
+    UNIQUE INDEX `idClientes_UNIQUE` (`idClientes` ASC) VISIBLE)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`empleados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`empleados` (
-  `idEmpleados` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apellido` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `salario` INT NOT NULL,
-  `horarioTrabajo` VARCHAR(45) NOT NULL,
-  `isVendedor` TINYINT NOT NULL,
-  PRIMARY KEY (`idEmpleados`),
-  UNIQUE INDEX `idEmpleados_UNIQUE` (`idEmpleados` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    `idEmpleados` INT NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(45) NOT NULL,
+    `apellido` VARCHAR(45) NOT NULL,
+    `telefono` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(45) NOT NULL,
+    `salario` INT NOT NULL,
+    `horarioTrabajo` VARCHAR(45) NOT NULL,
+    `isVendedor` TINYINT NOT NULL,
+    PRIMARY KEY (`idEmpleados`),
+    UNIQUE INDEX `idEmpleados_UNIQUE` (`idEmpleados` ASC) VISIBLE)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`facturas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`facturas` (
-  `idFactura` INT NOT NULL,
-  `idCliente` INT NOT NULL,
-  `idVendedor` INT NOT NULL,
-  `date` DATE NOT NULL,
-  PRIMARY KEY (`idFactura`),
-  UNIQUE INDEX `idFactura_UNIQUE` (`idFactura` ASC) VISIBLE,
-  INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
-  INDEX `idVendedor_idx` (`idVendedor` ASC) VISIBLE,
-  CONSTRAINT `idCliente`
+    `idFactura` INT NOT NULL AUTO_INCREMENT,
+    `idCliente` INT NOT NULL,
+    `idVendedor` INT NOT NULL,
+    `date` DATE NOT NULL,
+    PRIMARY KEY (`idFactura`),
+    UNIQUE INDEX `idFactura_UNIQUE` (`idFactura` ASC) VISIBLE,
+    INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
+    INDEX `idVendedor_idx` (`idVendedor` ASC) VISIBLE,
+    CONSTRAINT `idCliente`
     FOREIGN KEY (`idCliente`)
     REFERENCES `tienda`.`clientes` (`idClientes`),
-  CONSTRAINT `idVendedor`
+    CONSTRAINT `idVendedor`
     FOREIGN KEY (`idVendedor`)
     REFERENCES `tienda`.`empleados` (`idEmpleados`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`productos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`productos` (
-  `idProductos` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(45) NOT NULL,
-  `precio` INT NOT NULL,
-  PRIMARY KEY (`idProductos`),
-  UNIQUE INDEX `idProductos_UNIQUE` (`idProductos` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    `idProductos` INT NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(45) NOT NULL,
+    `descripcion` VARCHAR(45) NOT NULL,
+    `precio` INT NOT NULL,
+    PRIMARY KEY (`idProductos`),
+    UNIQUE INDEX `idProductos_UNIQUE` (`idProductos` ASC) VISIBLE)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`proveedores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`proveedores` (
-  `idProveedores` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idProveedores`),
-  UNIQUE INDEX `idProveedores_UNIQUE` (`idProveedores` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    `idProveedores` INT NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(45) NOT NULL,
+    `telefono` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`idProveedores`),
+    UNIQUE INDEX `idProveedores_UNIQUE` (`idProveedores` ASC) VISIBLE)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`sucursales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`sucursales` (
-  `idSucursales` INT NOT NULL,
-  `direccion` VARCHAR(45) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idSucursales`),
-  UNIQUE INDEX `idSucursales_UNIQUE` (`idSucursales` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    `idSucursales` INT NOT NULL AUTO_INCREMENT,
+    `direccion` VARCHAR(45) NOT NULL,
+    `nombre` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`idSucursales`),
+    UNIQUE INDEX `idSucursales_UNIQUE` (`idSucursales` ASC) VISIBLE)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`unidades`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`unidades` (
-  `idUnidades` INT NOT NULL,
-  `idProducto` INT NOT NULL,
-  `idProveedor` INT NOT NULL,
-  `idSucursal` INT NOT NULL,
-  PRIMARY KEY (`idUnidades`),
-  UNIQUE INDEX `idUnidades_UNIQUE` (`idUnidades` ASC) VISIBLE,
-  INDEX `idProducto_idx` (`idProducto` ASC) VISIBLE,
-  INDEX `idProveedor_idx` (`idProveedor` ASC) VISIBLE,
-  INDEX `idSucursal_idx` (`idSucursal` ASC) VISIBLE,
-  CONSTRAINT `idProducto`
+    `idUnidades` INT NOT NULL AUTO_INCREMENT,
+    `idProducto` INT NOT NULL,
+    `idProveedor` INT NOT NULL,
+    `idSucursal` INT NOT NULL,
+    PRIMARY KEY (`idUnidades`),
+    UNIQUE INDEX `idUnidades_UNIQUE` (`idUnidades` ASC) VISIBLE,
+    INDEX `idProducto_idx` (`idProducto` ASC) VISIBLE,
+    INDEX `idProveedor_idx` (`idProveedor` ASC) VISIBLE,
+    INDEX `idSucursal_idx` (`idSucursal` ASC) VISIBLE,
+    CONSTRAINT `idProducto`
     FOREIGN KEY (`idProducto`)
     REFERENCES `tienda`.`productos` (`idProductos`),
-  CONSTRAINT `idProveedor`
+    CONSTRAINT `idProveedor`
     FOREIGN KEY (`idProveedor`)
     REFERENCES `tienda`.`proveedores` (`idProveedores`),
-  CONSTRAINT `idSucursal`
+    CONSTRAINT `idSucursal`
     FOREIGN KEY (`idSucursal`)
     REFERENCES `tienda`.`sucursales` (`idSucursales`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`facturaunidad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`facturaunidad` (
-  `idFactura` INT NOT NULL,
-  `idUnidad` INT NOT NULL,
-  PRIMARY KEY (`idFactura`, `idUnidad`),
-  INDEX `idUnidad_idx` (`idUnidad` ASC) VISIBLE,
-  CONSTRAINT `idFactura`
+    `idFactura` INT NOT NULL,
+    `idUnidad` INT NOT NULL,
+    PRIMARY KEY (`idFactura`, `idUnidad`),
+    INDEX `idUnidad_idx` (`idUnidad` ASC) VISIBLE,
+    CONSTRAINT `idFactura`
     FOREIGN KEY (`idFactura`)
     REFERENCES `tienda`.`facturas` (`idFactura`),
-  CONSTRAINT `idUnidad`
+    CONSTRAINT `idUnidad`
     FOREIGN KEY (`idUnidad`)
     REFERENCES `tienda`.`unidades` (`idUnidades`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `tienda`.`sucursalesempleados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda`.`sucursalesempleados` (
-  `idSucursal` INT NOT NULL,
-  `idEmpleado` INT NOT NULL,
-  PRIMARY KEY (`idSucursal`, `idEmpleado`),
-  INDEX `idEmpleado_idx` (`idEmpleado` ASC) VISIBLE,
-  CONSTRAINT `idEmpleado`
+    `idSucursal` INT NOT NULL,
+    `idEmpleado` INT NOT NULL,
+    PRIMARY KEY (`idSucursal`, `idEmpleado`),
+    INDEX `idEmpleado_idx` (`idEmpleado` ASC) VISIBLE,
+    CONSTRAINT `idEmpleado`
     FOREIGN KEY (`idEmpleado`)
     REFERENCES `tienda`.`empleados` (`idEmpleados`),
-  CONSTRAINT `idSucursal1`
+    CONSTRAINT `idSucursal1`
     FOREIGN KEY (`idSucursal`)
     REFERENCES `tienda`.`sucursales` (`idSucursales`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
