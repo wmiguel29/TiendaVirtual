@@ -8,7 +8,7 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name = "idempleados")
-    private long id;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -23,15 +23,15 @@ public class Empleado {
     private String email;
 
     @Column(name = "salario")
-    private int salario;
+    private Integer salario;
 
     @Column(name = "horariotrabajo")
     private String horarioTrabajo;
 
     @Column(name = "isvendedor")
-    private boolean isVendedor;
+    private Boolean isVendedor;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -71,7 +71,7 @@ public class Empleado {
         this.email = email;
     }
 
-    public int getSalario() {
+    public Integer getSalario() {
         return salario;
     }
 
@@ -87,7 +87,7 @@ public class Empleado {
         this.horarioTrabajo = horarioTrabajo;
     }
 
-    public boolean isVendedor() {
+    public Boolean isVendedor() {
         return isVendedor;
     }
 

@@ -25,12 +25,12 @@ public class EmpleadoController {
     }
 
     @PostMapping("/empleados")
-    public Empleado save(Empleado e) {
-        return empleadoService.save(e);
+    public Empleado save(@RequestBody Empleado empleado) {
+        return empleadoService.save(empleado);
     }
 
     @DeleteMapping("/empleados/{idEmpleados}")
-    public void delete(long idEmpleados) {
+    public void delete(@PathVariable long idEmpleados) {
         empleadoService.delete(idEmpleados);
     }
 
