@@ -21,7 +21,7 @@ public class ClienteController {
     }
 
     @GetMapping("/clientes/{idClientes}")
-    public Cliente findAll(@PathVariable Long idClientes){
+    public Cliente findByID(@PathVariable Long idClientes){
         return clienteService.findById(idClientes);
     }
 
