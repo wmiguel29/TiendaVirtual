@@ -1,6 +1,7 @@
 package com.implementacion.tienda_virtual.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "empleados")
@@ -31,11 +32,14 @@ public class Empleado {
     @Column(name = "isvendedor")
     private Boolean isVendedor;
 
+    @OneToMany(mappedBy = "empleado")
+    private List<Factura> facturas;
+
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,7 +79,7 @@ public class Empleado {
         return salario;
     }
 
-    public void setSalario(int salario) {
+    public void setSalario(Integer salario) {
         this.salario = salario;
     }
 
@@ -94,4 +98,5 @@ public class Empleado {
     public void setVendedor(boolean vendedor) {
         isVendedor = vendedor;
     }
+
 }

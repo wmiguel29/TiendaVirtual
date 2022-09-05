@@ -1,6 +1,7 @@
 package com.implementacion.tienda_virtual.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -22,6 +23,9 @@ public class Cliente {
 
     @Column(name = "telefono")
     private String telefono;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Factura> facturas;
 
     public Long getId() {
         return id;

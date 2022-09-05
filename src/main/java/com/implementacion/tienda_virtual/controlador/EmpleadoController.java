@@ -20,7 +20,7 @@ public class EmpleadoController {
     }
 
     @GetMapping("/empleados/{idEmpleados}")
-    public Empleado findById(@PathVariable long idEmpleados) {
+    public Empleado findById(@PathVariable Long idEmpleados) {
         return empleadoService.findById(idEmpleados);
     }
 
@@ -30,7 +30,7 @@ public class EmpleadoController {
     }
 
     @DeleteMapping("/empleados/{idEmpleados}")
-    public void delete(@PathVariable long idEmpleados) {
+    public void delete(@PathVariable Long idEmpleados) {
         empleadoService.delete(idEmpleados);
     }
 

@@ -19,7 +19,7 @@ public class EmpleadoService implements IEmpleadoService{
     }
 
     @Override
-    public Empleado findById(long id) {
+    public Empleado findById(Long id) {
         return empleadoDAO.findById(id).orElse(null);
     }
 
@@ -29,7 +29,7 @@ public class EmpleadoService implements IEmpleadoService{
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         empleadoDAO.deleteById(id);
     }
 
