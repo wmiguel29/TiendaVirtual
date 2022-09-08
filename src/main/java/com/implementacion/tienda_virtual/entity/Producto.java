@@ -21,6 +21,9 @@ public class Producto {
     @Column(name = "descripcion")
     private String descripcion;
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Unidad> unidades;
+
     public Long getId() {
         return id;
     }
