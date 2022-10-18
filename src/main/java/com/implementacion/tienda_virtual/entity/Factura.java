@@ -4,6 +4,7 @@ import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "facturas")
@@ -30,6 +31,10 @@ public class Factura {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idvendedor", insertable = false, updatable = false)
     private Empleado empleado;
+
+    @OneToMany(mappedBy = "factura", fetch = FetchType.LAZY)
+    private List<FacturaUnidad> facturaUnidades;
+
 
     public Long getIdF() {
         return idF;

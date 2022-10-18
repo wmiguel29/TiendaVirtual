@@ -35,6 +35,9 @@ public class Empleado {
     @OneToMany(mappedBy = "empleado")
     private List<Factura> facturas;
 
+    @OneToMany(mappedBy = "empleado")
+    private List<SucursalEmpleado> sucursalEmpleados;
+
     public Long getId() {
         return id;
     }

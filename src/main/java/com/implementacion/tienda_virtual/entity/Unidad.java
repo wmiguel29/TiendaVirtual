@@ -1,6 +1,7 @@
 package com.implementacion.tienda_virtual.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "unidades")
@@ -27,6 +28,13 @@ public class Unidad {
     @ManyToOne
     @JoinColumn(name = "idproveedor", updatable = false, insertable = false)
     private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(name = "idsucursal", updatable = false, insertable = false)
+    private Sucursal sucursal;
+
+    @OneToMany(mappedBy = "unidad")
+    private Set<FacturaUnidad> facturaUnidades;
 
     public Long getId() {
         return id;

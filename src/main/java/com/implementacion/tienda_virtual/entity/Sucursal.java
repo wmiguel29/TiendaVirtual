@@ -2,6 +2,7 @@ package com.implementacion.tienda_virtual.entity;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "sucursales")
@@ -17,6 +18,9 @@ public class Sucursal {
 
     @Column(name = "direccion")
     private String direccion;
+
+    @OneToMany(mappedBy = "sucursal")
+    private Set<SucursalEmpleado> sucursalEmpleados;
 
     public Long getId() {
         return id;
