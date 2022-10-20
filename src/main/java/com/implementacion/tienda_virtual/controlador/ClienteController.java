@@ -36,7 +36,7 @@ public class ClienteController {
     }
 
     @PutMapping("/clientes/{idClientes}")
-public Cliente update(@RequestBody Cliente cliente, @PathVariable Long idClientes){
+    public Cliente update(@RequestBody Cliente cliente, @PathVariable Long idClientes){
         Cliente actual = clienteService.findById(idClientes);
         actual.setNombre(cliente.getNombre());
         actual.setApellido(cliente.getApellido());
@@ -45,6 +45,8 @@ public Cliente update(@RequestBody Cliente cliente, @PathVariable Long idCliente
 
         return clienteService.save(actual);
     }
+
+
 
 
 }
